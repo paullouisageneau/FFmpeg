@@ -31,6 +31,8 @@
 #include "intfloat.h"
 #include "mathematics.h"
 
+#ifndef __EMSCRIPTEN__
+
 #if HAVE_MIPSFPU && HAVE_INLINE_ASM
 #include "libavutil/mips/libm_mips.h"
 #endif /* HAVE_MIPSFPU && HAVE_INLINE_ASM*/
@@ -467,5 +469,7 @@ static av_always_inline av_const float truncf(float x)
     return (x > 0) ? floor(x) : ceil(x);
 }
 #endif /* HAVE_TRUNCF */
+
+#endif
 
 #endif /* AVUTIL_LIBM_H */
